@@ -1,12 +1,35 @@
-function getRandomNum(from, to) {
-  from = Math.floor(Math.abs(from)); // округляем минимальное число в абсолютном значении в меньшую сторону
-  to = Math.floor(Math.abs(to)); // округляем максимальное число в абсолютном значении в меньшую сторону
-  let result = Math.floor(Math.random() * (to - from + 1)) + from; // вычисляем любое число в диапазоне включительно
-  if (from >= to) { // проверяем, что параметр "до" больше параметра "от"
-   result = false;
-   console.log('Программа не может быть выполнена');
-    }
-    return result;
-}
-getRandomNum(-29, 10);
+function getRandomNum(from, to, decimal) {
 
+  let result = Math.random() * (to - from) + from; // вычисляем любое целое число в диапазоне включительно
+
+  if (from >= to) { // проверяем, что параметр "до" больше параметра "от"
+    result = false;
+    console.log('Программа не может быть выполнена');
+  }
+  if (from<0||to<0) { // проверяем, что параметры больше 0
+    result = false;
+    console.log('Программа не может быть выполнена');
+  }
+
+  return result;
+}
+
+getRandomNum(5, 22);
+
+function getRandomNumDecimal(from, to, decimal) {
+
+  let result = Math.random() * (to - from) + from; // вычисляем любое число с плавающей точкой в диапазоне включительно
+
+  if (from >= to) { // проверяем, что параметр "до" больше параметра "от"
+    result = false;
+    console.log('Программа не может быть выполнена');
+  }
+  if (from<0||to<0) { // проверяем, что параметры больше 0
+    result = false;
+    console.log('Программа не может быть выполнена');
+  }
+  result = result.toFixed(decimal); // задаем параметр decimal
+  return result;
+}
+
+getRandomNumDecimal(5, 12, 5);
