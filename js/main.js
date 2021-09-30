@@ -4,11 +4,11 @@ function getRandomNum(from, to, decimal) {
 
   if (from >= to) { // проверяем, что параметр "до" больше параметра "от"
     result = false;
-    console.log('Программа не может быть выполнена');
+    
   }
   if (from<0||to<0) { // проверяем, что параметры больше 0
     result = false;
-    console.log('Программа не может быть выполнена');
+    
   }
 
   return result;
@@ -22,11 +22,11 @@ function getRandomNumDecimal(from, to, decimal) {
 
   if (from >= to) { // проверяем, что параметр "до" больше параметра "от"
     result = false;
-    console.log('Программа не может быть выполнена');
+   
   }
   if (from<0||to<0) { // проверяем, что параметры больше 0
     result = false;
-    console.log('Программа не может быть выполнена');
+   
   }
   result = result.toFixed(decimal); // задаем параметр decimal
   return result;
