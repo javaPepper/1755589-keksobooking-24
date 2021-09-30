@@ -1,4 +1,4 @@
-function getRandomNum(from, to, decimal) {
+function getRandomNum(from, to) {
 
   let result = Math.random() * (to - from) + from; // вычисляем любое целое число в диапазоне включительно
 
