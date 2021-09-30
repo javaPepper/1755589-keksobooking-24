@@ -16,6 +16,5 @@ globals:
 extends:
   "htmlacademy/vanilla"
 
-rules: 
-  "no-unused-vars": "off"
+
 
