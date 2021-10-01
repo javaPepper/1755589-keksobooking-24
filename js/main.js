@@ -1,6 +1,9 @@
 function getRandomNum(from, to) {
 
-  let result = Math.random() * (to - from) + from; // вычисляем любое целое число в диапазоне включительно
+  from = Math.ceil(from); // округляем минимальное число в большую сторону
+  to = Math.floor(to); // округляем максимальное число в меньшую сторону
+
+  let result = Math.floor(Math.random() * (to - from + 1)) + from; // вычисляем любое целое число в диапазоне включительно
 
   if (from >= to) { // проверяем, что параметр "до" больше параметра "от"
     result = false;
