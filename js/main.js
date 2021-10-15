@@ -33,3 +33,5 @@ let createAdObject = function () {
 };
 
 createAdObject();
+export {TYPEARRAY, CHECKINVALUE, CHECKOUTVALUE, ADARRAY, PHOTOS, PHOTOSARRAY, FEATURES, FEATURESARRAY};
+export {getRandomNum, getRandomNumDecimal, getRandomFeatures, getRandomLength, getRandomPhotos, getUrl, getTitleNum};
