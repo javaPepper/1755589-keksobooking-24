@@ -1,12 +1,16 @@
-
+import{getRandomNum, getRandomNumDecimal, getUrl, getTitleNum, getRandomLength, getRandomFeatures, getRandomPhotos} from './util.js';
+const TYPEARRAY = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
+const CHECKINVALUE = ['12:00', '13:00', '14:00'];
+const CHECKOUTVALUE = ['12:00', '13:00', '14:00'];
+const ADARRAY = [];
 const getAdObject = function (avatarNum, titleString) {
-  let adObject = {
+  const adObject = {
     author: {
       avatar: avatarNum,
     },
     offer: {
       title: titleString,
-      address: getRandomNumDecimal(35.65000, 35.70000, 5) + ', ' + getRandomNumDecimal(139.70000, 139.80000, 5),
+      address: `${getRandomNumDecimal(35.65000, 35.70000, 5)  }, ${  getRandomNumDecimal(139.70000, 139.80000, 5)}`,
       price: getRandomNum(100, 50000),
       type: TYPEARRAY[getRandomLength(TYPEARRAY)],
       rooms: getRandomNum(1, 4),
@@ -19,19 +23,17 @@ const getAdObject = function (avatarNum, titleString) {
     },
     location: {
       lat: getRandomNumDecimal(35.65000, 35.70000, 5),
-      lng: getRandomNumDecimal(139.70000, 139.80000, 5)
+      lng: getRandomNumDecimal(139.70000, 139.80000, 5),
     },
   };
   return adObject;
 };
-
-let createAdObject = function () {
+const createAdObject = function () {
   for (let i=1; i<=10; i++) {
-    adArray[i]=getAdObject(getUrl(i), getTitleNum(i));
+    ADARRAY[i]=getAdObject(getUrl(i), getTitleNum(i));
   }
-  return adArray;
+  return ADARRAY;
 };
 
 createAdObject();
-export {TYPEARRAY, CHECKINVALUE, CHECKOUTVALUE, ADARRAY, PHOTOS, PHOTOSARRAY, FEATURES, FEATURESARRAY};
-export {getRandomNum, getRandomNumDecimal, getRandomFeatures, getRandomLength, getRandomPhotos, getUrl, getTitleNum};
+
