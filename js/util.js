@@ -1,4 +1,4 @@
-import{FEATURES, FEATURESARRAY, PHOTOS, PHOTOSARRAY} from './data.js';
+
 function getRandomNum(from, to) {
 
   from = Math.ceil(from);
@@ -44,21 +44,9 @@ const getUrl = function(number) {
 const getTitleNum = function (num) {
   return `${num  }-е объявление`;
 };
-function getRandomLength(array) {
-  return Math.floor(Math.random()*(array.length - 0) + 0);
-}
-const  getRandomFeatures = function(){
-  for (let i = 0; i<=getRandomLength(FEATURESARRAY); i++) {
-    FEATURES[i]  = FEATURESARRAY[i];
-  }
-  return FEATURES;
-};
-function  getRandomPhotos(){
-
-  for (let i = 0; i<=getRandomLength(PHOTOSARRAY); i++) {
-    PHOTOS[i] = PHOTOSARRAY[i];
-  }
-  return PHOTOS;
+function getRandomIndex(array) {
+  return Math.floor(Math.random()*array.length);
 }
 
-export {getRandomNumDecimal, getRandomNum, getUrl, getTitleNum, getRandomLength, getRandomFeatures, getRandomPhotos};
+
+export {getRandomNumDecimal, getRandomNum, getUrl, getTitleNum, getRandomIndex};
