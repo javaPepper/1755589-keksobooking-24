@@ -1,5 +1,5 @@
 
-function getRandomNum(from, to) {
+const getRandomNum = function(from, to) {
 
   from = Math.ceil(from);
   to = Math.floor(to);
@@ -18,7 +18,7 @@ function getRandomNum(from, to) {
   return result;
 }
 
-function getRandomNumDecimal(from, to, decimal) {
+const getRandomNumDecimal = function(from, to, decimal) {
 
   let resultFloat = Math.random() * (to - from) + from;
 
@@ -34,19 +34,9 @@ function getRandomNumDecimal(from, to, decimal) {
   return resultFloat;
 }
 
-const getUrl = function(number) {
-  if (number<10) {
-    return  `img/avatars/user/0${  number  }.png`;
-  }
-  return `img/avatars/user${  number  }.png`;
-};
-
-const getTitleNum = function (num) {
-  return `${num  }-е объявление`;
-};
 function getRandomIndex(array) {
   return Math.floor(Math.random()*array.length);
 }
 
 
-export {getRandomNumDecimal, getRandomNum, getUrl, getTitleNum, getRandomIndex};
+export {getRandomNumDecimal, getRandomNum, getRandomIndex};

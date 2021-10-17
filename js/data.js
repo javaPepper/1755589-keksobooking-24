@@ -1,4 +1,4 @@
-import{getUrl, getTitleNum, getRandomNum, getRandomNumDecimal, getRandomIndex} from './util.js';
+import{ getRandomNum, getRandomNumDecimal, getRandomIndex} from './util.js';
 const TYPEARRAY = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const CHECKINVALUE = ['12:00', '13:00', '14:00'];
 const CHECKOUTVALUE = ['12:00', '13:00', '14:00'];
@@ -14,13 +14,24 @@ const  getRandomFeatures = function(){
   }
   return FEATURES;
 };
-function  getRandomPhotos(){
+const getRandomPhotos = function(){
 
   for (let i = 0; i<=getRandomIndex(PHOTOSARRAY); i++) {
     PHOTOS[i] = PHOTOSARRAY[i];
   }
   return PHOTOS;
 }
+const getUrl = function(number) {
+  if (number<10) {
+    return  `img/avatars/user/0${  number  }.png`;
+  }
+  return `img/avatars/user${  number  }.png`;
+};
+
+const getTitleNum = function (num) {
+  return `${num  }-е объявление`;
+};
+
 const getAdObject = function (avatarNum, titleString) {
   const adObject = {
     author: {
