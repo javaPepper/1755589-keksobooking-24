@@ -16,7 +16,7 @@ const getRandomNum = function(from, to) {
   }
 
   return result;
-}
+};
 
 const getRandomNumDecimal = function(from, to, decimal) {
 
@@ -32,7 +32,7 @@ const getRandomNumDecimal = function(from, to, decimal) {
   }
   resultFloat = resultFloat.toFixed(decimal);
   return resultFloat;
-}
+};
 
 function getRandomIndex(array) {
   return Math.floor(Math.random()*array.length);
