@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 const log = console.log;
 let rooms = 'комнаты';
 let guests = 'гостей';
@@ -14,14 +15,12 @@ const popupPrice = popup.querySelector('.popup__text--price');
 const popupType = popup.querySelector('.popup__type');
 const popupCapacity = popup.querySelector('.popup__text--capacity');
 const popupTime = popup.querySelector('.popup__text--time');
-const popupFeatures = popup.querySelector('.popup__feature--wifi');
 
-//const popupFeaturesCollection = popupFeatures.children;
-//log(popupFeatures[2]);
-//const popupFeaturesCollection = popup.querySelectorAll('.popup__feature');
+const popupFeatures = popup.querySelector('.popup__features');
+const popFeature = popup.querySelectorAll('.popup__feature');
 const popupDescription = popup.querySelector('.popup__description');
 const popupPhotos = popup.querySelector('.popup__photo');
-//
+
 const renderCards = function (object) {
 
   popupAvatar.src = object.author.avatar;
@@ -51,19 +50,14 @@ const renderCards = function (object) {
     guests = 'гостя';
   }
   popupCapacity.innerHTML = `${object.offer.rooms  } ${  rooms  } ` + 'для' + ` ${  object.offer.guests  } ${  guests}`;
-
   popupTime.innerHTML = `Заезд после ${  object.offer.checkin  }, выезд до ${  object.offer.checkout}`;
-
-  popupFeatures.hidden = true;
-  /*for (let i = 0; i<object.offer.features.length; i++) {
-    popupFeaturesCollection[i].innerHTML = object.offer.features[i];
-    if (popupFeaturesCollection[i].innerHTML === '') {
-      popupFeaturesCollection[i].hidden = true;
-    }
-    //log(popupFeaturesCollection[i].innerHTML);
-  }*/
+  for (let i = 0; i<popFeature.length; i++) {
+    popFeature[i].remove();
+  }
+  for (let i = 0; i<object.offer.features.length; i++) {
+    popupFeatures.appendChild(popFeature[i]);
+  }
   popupDescription.innerHTML= object.offer.description;
-
   for (let i = 0; i<3; i++) {
     popupPhotos.src = object.offer.photos[i];
   }
