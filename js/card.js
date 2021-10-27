@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-concat */
-const log = console.log;
+//const log = console.log;
 let rooms = 'комнаты';
 let guests = 'гостей';
 const mapCanvas = document.querySelector('#map-canvas');
