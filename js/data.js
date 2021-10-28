@@ -24,7 +24,7 @@ const getRandomPhotos = function(){
 };
 const getАuthorUrl = function(number) {
   if (number<10) {
-    return  `img/avatars/user/0${  number  }.png`;
+    return  `img/avatars/user0${  number  }.png`;
   }
   return `img/avatars/user${  number  }.png`;
 };

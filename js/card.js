@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-concat */
-//const log = console.log;
+const log = console.log;
 let rooms = 'комнаты';
 let guests = 'гостей';
 const mapCanvas = document.querySelector('#map-canvas');
@@ -22,7 +22,6 @@ const photosList = popup.querySelector('.popup__photo');
 const popupPhotos = popup.querySelector('.popup__photos');
 
 const renderCards = function (object) {
-
   popupAvatar.src = object.author.avatar;
   popupTitle.innerHTML = object.offer.title;
   popupAddress.innerHTML = object.offer.address;
@@ -71,6 +70,9 @@ const renderCards = function (object) {
     popPhotos.height = '40';
     popPhotos.src = object.offer.photos[i];
     popupPhotos.appendChild(popPhotos);
+  }
+  if (popFeature === '' || popFeature === undefined) {
+    popFeature.remove();
   }
   mapCanvas.appendChild(cardElement);
 };
