@@ -15,11 +15,11 @@ const popupPrice = popup.querySelector('.popup__text--price');
 const popupType = popup.querySelector('.popup__type');
 const popupCapacity = popup.querySelector('.popup__text--capacity');
 const popupTime = popup.querySelector('.popup__text--time');
-
 const popupFeatures = popup.querySelector('.popup__features');
 const popFeature = popup.querySelectorAll('.popup__feature');
 const popupDescription = popup.querySelector('.popup__description');
-const popupPhotos = popup.querySelector('.popup__photo');
+const photosList = popup.querySelector('.popup__photo');
+const popupPhotos = popup.querySelector('.popup__photos');
 
 const renderCards = function (object) {
 
@@ -51,15 +51,26 @@ const renderCards = function (object) {
   }
   popupCapacity.innerHTML = `${object.offer.rooms  } ${  rooms  } ` + 'для' + ` ${  object.offer.guests  } ${  guests}`;
   popupTime.innerHTML = `Заезд после ${  object.offer.checkin  }, выезд до ${  object.offer.checkout}`;
+
   for (let i = 0; i<popFeature.length; i++) {
     popFeature[i].remove();
   }
   for (let i = 0; i<object.offer.features.length; i++) {
-    popupFeatures.appendChild(popFeature[i]);
+    const popupFeaturesCollection = document.createElement('li');
+    popupFeaturesCollection.classList.add('popup__feature');
+    popupFeaturesCollection.classList.add(`popup__feature--${  object.offer.features[i]}`);
+    popupFeatures.appendChild(popupFeaturesCollection);
   }
   popupDescription.innerHTML= object.offer.description;
-  for (let i = 0; i<3; i++) {
-    popupPhotos.src = object.offer.photos[i];
+
+  photosList.remove();
+  for (let i = 0; i<object.offer.photos.length; i++) {
+    const popPhotos = document.createElement('img');
+    popPhotos.classList.add('popup__photo');
+    popPhotos.width = '45';
+    popPhotos.height = '40';
+    popPhotos.src = object.offer.photos[i];
+    popupPhotos.appendChild(popPhotos);
   }
   mapCanvas.appendChild(cardElement);
 };
