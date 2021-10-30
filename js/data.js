@@ -1,4 +1,5 @@
 import{ getRandomNum, getRandomNumDecimal, getRandomIndex} from './util.js';
+const adArray = [];
 const TYPEARRAY = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const CHECKINVALUE = ['12:00', '13:00', '14:00'];
 const CHECKOUTVALUE = ['12:00', '13:00', '14:00'];
@@ -20,15 +21,15 @@ const getRandomPhotos = function(){
     PHOTOS[i] = PHOTOSARRAY[i];
   }
   return PHOTOS;
-}
-const getUrl = function(number) {
+};
+const getАuthorUrl = function(number) {
   if (number<10) {
-    return  `img/avatars/user/0${  number  }.png`;
+    return  `img/avatars/user0${  number  }.png`;
   }
   return `img/avatars/user${  number  }.png`;
 };
 
-const getTitleNum = function (num) {
+const getOfferTitleNum = function (num) {
   return `${num  }-е объявление`;
 };
 
@@ -58,12 +59,11 @@ const getAdObject = function (avatarNum, titleString) {
   return adObject;
 };
 
-const adArray = [];
-
 const createAdObject = function () {
-  for (let i=1; i<=10; i++) {
-    adArray[i]=getAdObject(getUrl(i), getTitleNum(i));
+  for (let i=0; i<10; i++) {
+    adArray[i]=getAdObject(getАuthorUrl(i+1), getOfferTitleNum(i+1));
   }
   return adArray;
 };
+
 export{createAdObject};
