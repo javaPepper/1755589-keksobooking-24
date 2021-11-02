@@ -1,10 +1,10 @@
 import {createAdObject} from './data.js';
 import {renderCards} from './card.js';
-import {onFormActivity, onMapActivity} from './formModal.js';
+import {enableForms, disableForms} from './formModal.js';
 
 let firstObject = createAdObject();
 firstObject = firstObject[0];
 
 renderCards(firstObject);
-onFormActivity();
-onMapActivity();
+disableForms();
+enableForms();

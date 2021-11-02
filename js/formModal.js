@@ -3,16 +3,24 @@ const fieldset = adForm.children;
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersDisabled = mapFilters.children;
 
-const onFormActivity = function() {
+const disableForms = function() {
   adForm.classList.add('ad-form--disabled');
   for (let i=0; i<fieldset.length; i++) {
     fieldset[i].setAttribute('disabled', 'disabled');
   }
-};
-const onMapActivity = function() {
   mapFilters.classList.add('map__filters--disabled');
-  for (let i=0; i<mapFiltersDisabled.length; i++) {
-    mapFiltersDisabled[i].setAttribute('disabled', 'disabled');
+  for (let j=0; j<mapFiltersDisabled.length; j++) {
+    mapFiltersDisabled[j].setAttribute('disabled', 'disabled');
   }
 };
-export{onFormActivity, onMapActivity};
+const enableForms = function() {
+  adForm.classList.remove('ad-form--disabled');
+  for (let i=0; i<fieldset.length; i++) {
+    fieldset[i].removeAttribute('disabled');
+  }
+  mapFilters.classList.remove('map__filters--disabled');
+  for (let j=0; j<mapFiltersDisabled.length; j++) {
+    mapFiltersDisabled[j].removeAttribute('disabled');
+  }
+};
+export{enableForms, disableForms};
