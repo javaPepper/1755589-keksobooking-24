@@ -4,8 +4,10 @@ const adFormElement = adForm.querySelectorAll('.ad-form__element');
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersElement = mapFilters.querySelectorAll('.map__filter');
 const title = adForm.querySelector('#title');
+const price = adForm.querySelector('#price');
 const MIN_TITLE_VALUE_LENGTH = 30;
 const MAX_TITLE_VALUE_LENGTH = 100;
+const MAX_PRICE_VALUE = 1000000;
 
 const disableForms = function() {
   adForm.classList.add('ad-form--disabled');
@@ -38,10 +40,20 @@ const titleListener = title.addEventListener('input',  () => {
   else if (valueLength>MAX_TITLE_VALUE_LENGTH) {
     title.setCustomValidity(`Уберите ${  valueLength - MAX_TITLE_VALUE_LENGTH  } симв.`);
   }
-  else {title.setCustomValidity('');
+  else {
+    title.setCustomValidity('');
   }
   title.reportValidity();
 });
+const priceListener = price.addEventListener('input', () => {
+  const valueLength = price.value;
+  if (valueLength>MAX_PRICE_VALUE) {
+    price.setCustomValidity(`Задайте цену ниже на ${  valueLength - MAX_PRICE_VALUE} руб.`);
+  }
+  else {
+    price.setCustomValidity('');
+  }
+  price.reportValidity();
+});
 
-
-export{enableForms, disableForms, titleListener};
+export{enableForms, disableForms, titleListener, priceListener};
