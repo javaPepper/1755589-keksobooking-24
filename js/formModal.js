@@ -58,23 +58,35 @@ const priceListener = price.addEventListener('input', () => {
   }
   price.reportValidity();
 });
-
-const disableOptions = function () {
-  for (let i = 0; i<rooms.length; i++) {
-    capacity[i].disabled = true;
+const setEnableOptions = function (index) {
+  for (let i = 0; i<index.length; i++) {
+    index[i].disabled = false;
   }
 };
-
+const setDisableOptions = function (index) {
+  for (let i = 0; i<index.length; i++) {
+    index[i].disabled = true;
+  }
+};
 const options = rooms.addEventListener('change', getRoomGuestIdentity);
 function getRoomGuestIdentity(evt) {
   capacity.value = evt.target.value;
   if (evt.target.value === '100') {
     capacity.value = '0';
+    setDisableOptions(capacity);
+  }
+  if (evt.target.value === '3') {
+    setEnableOptions(capacity);
+    capacity[3].disabled = true;
   }
   if (evt.target.value === '2') {
+    setDisableOptions(capacity);
     capacity[2].disabled = false;
     capacity[1].disabled = false;
   }
+  if (evt.target.value === '1') {
+    setDisableOptions(capacity);
+  }
 }
 
-export{enableForms, disableForms, titleListener, priceListener, disableOptions, options};
+export{enableForms, disableForms, titleListener, priceListener, setDisableOptions, setEnableOptions, options};
