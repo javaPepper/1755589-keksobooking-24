@@ -1,3 +1,6 @@
+const MIN_TITLE_VALUE_LENGTH = 30;
+const MAX_TITLE_VALUE_LENGTH = 100;
+const MAX_PRICE_VALUE = 1000000;
 const adForm = document.querySelector('.ad-form');
 const adFormHeader = adForm.querySelector('.ad-form-header');
 const adFormElement = adForm.querySelectorAll('.ad-form__element');
@@ -7,10 +10,6 @@ const title = adForm.querySelector('#title');
 const price = adForm.querySelector('#price');
 const rooms = adForm.querySelector('select[name="rooms"]');
 const capacity = adForm.querySelector('select[name="capacity"]');
-
-const MIN_TITLE_VALUE_LENGTH = 30;
-const MAX_TITLE_VALUE_LENGTH = 100;
-const MAX_PRICE_VALUE = 1000000;
 
 const disableForms = function() {
   adForm.classList.add('ad-form--disabled');
@@ -34,8 +33,7 @@ const enableForms = function() {
     mapFiltersElement[j].disabled = false;
   }
 };
-
-const titleListener = title.addEventListener('input',  () => {
+title.addEventListener('input',  () => {
   const valueLength = title.value.length;
   if (valueLength<MIN_TITLE_VALUE_LENGTH) {
     title.setCustomValidity(`Добавьте еще ${  MIN_TITLE_VALUE_LENGTH - valueLength}   симв.`);
@@ -48,7 +46,7 @@ const titleListener = title.addEventListener('input',  () => {
   }
   title.reportValidity();
 });
-const priceListener = price.addEventListener('input', () => {
+price.addEventListener('input', () => {
   const valueLength = price.value;
   if (valueLength>MAX_PRICE_VALUE) {
     price.setCustomValidity(`Задайте цену ниже на ${  valueLength - MAX_PRICE_VALUE} руб.`);
@@ -68,8 +66,8 @@ const setDisableOptions = function (index) {
     index[i].disabled = true;
   }
 };
-const options = rooms.addEventListener('change', getRoomGuestIdentity);
-function getRoomGuestIdentity(evt) {
+rooms.addEventListener('change', setRoomGuestIdentity);
+function setRoomGuestIdentity(evt) {
   capacity.value = evt.target.value;
   if (evt.target.value === '100') {
     capacity.value = '0';
@@ -89,4 +87,4 @@ function getRoomGuestIdentity(evt) {
   }
 }
 
-export{enableForms, disableForms, titleListener, priceListener, setDisableOptions, setEnableOptions, options};
+export{enableForms, disableForms, setDisableOptions, setEnableOptions};
