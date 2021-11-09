@@ -8,7 +8,7 @@ const mapFilters = document.querySelector('.map__filters');
 const mapFiltersElement = mapFilters.querySelectorAll('.map__filter');
 const title = adForm.querySelector('#title');
 const price = adForm.querySelector('#price');
-const rooms = adForm.querySelector('select[name="rooms"]');
+const rooms = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('select[name="capacity"]');
 
 const disableForms = function() {
