@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> ec303cb3bb567dc1e468d30b1f685831d62011ac
 const adForm = document.querySelector('.ad-form');
 const adFormHeader = adForm.querySelector('.ad-form-header');
 const adFormElement = adForm.querySelectorAll('.ad-form__element');
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersElement = mapFilters.querySelectorAll('.map__filter');
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ec303cb3bb567dc1e468d30b1f685831d62011ac
 const disableForms = function() {
   adForm.classList.add('ad-form--disabled');
   for (let i=0; i<adFormElement.length; i++) {
@@ -34,8 +26,4 @@ const enableForms = function() {
     mapFiltersElement[j].disabled = false;
   }
 };
-<<<<<<< HEAD
-
-=======
->>>>>>> ec303cb3bb567dc1e468d30b1f685831d62011ac
 export{enableForms, disableForms};
