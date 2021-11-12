@@ -114,4 +114,7 @@ type.addEventListener('change', (evt) => {
 timein.addEventListener('change', (evt) =>{
   timeout.value = evt.target.value;
 });
+timeout.addEventListener('change', (evt) => {
+  timein.value = evt.target.value;
+});
 export{enableForms, disableForms};
