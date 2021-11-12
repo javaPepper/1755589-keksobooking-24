@@ -10,6 +10,9 @@ const title = adForm.querySelector('#title');
 const price = adForm.querySelector('#price');
 const rooms = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('select[name="capacity"]');
+const type = adForm.querySelector('#type');
+const timein = adForm.querySelector('#timein');
+const timeout = adForm.querySelector('#timeout');
 
 const disableForms = function() {
   adForm.classList.add('ad-form--disabled');
@@ -86,4 +89,29 @@ function setRoomGuestIdentity(evt) {
     setDisableOptions(capacity);
   }
 }
+type.addEventListener('change', (evt) => {
+  if (evt.target.value === 'bungalow') {
+    price.min >= 0;
+    price.placeholder = '0';
+  }
+  if (evt.target.value === 'flat') {
+    price.min >= 1000;
+    price.placeholder = '1000';
+  }
+  if (evt.target.value === 'hotel') {
+    price.min >= 3000;
+    price.placeholder = '3000';
+  }
+  if (evt.target.value === 'house') {
+    price.min >= 5000;
+    price.placeholder = '5000';
+  }
+  if (evt.target.value === 'palace') {
+    price.min >= 10000;
+    price.placeholder = '10000';
+  }
+});
+timein.addEventListener('change', (evt) =>{
+  timeout.value = evt.target.value;
+});
 export{enableForms, disableForms};
