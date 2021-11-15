@@ -13,6 +13,7 @@ const capacity = adForm.querySelector('select[name="capacity"]');
 const type = adForm.querySelector('#type');
 const timein = adForm.querySelector('#timein');
 const timeout = adForm.querySelector('#timeout');
+const address = adForm.querySelector('#address');
 
 const disableForms = function() {
   adForm.classList.add('ad-form--disabled');
@@ -116,5 +117,8 @@ timein.addEventListener('change', (evt) =>{
 });
 timeout.addEventListener('change', (evt) => {
   timein.value = evt.target.value;
+});
+address.addEventListener('click', ()=>{
+  address.disabled = true;
 });
 export{enableForms, disableForms};

@@ -38,22 +38,22 @@ const getAdObject = function (avatarNum, titleString) {
     author: {
       avatar: avatarNum,
     },
+    location: {
+      lat: getRandomNumDecimal(35.65000, 35.70000, 5),
+      lng: getRandomNumDecimal(139.70000, 139.80000, 5),
+    },
     offer: {
       title: titleString,
       address: `${getRandomNumDecimal(35.65000, 35.70000, 5)  }, ${  getRandomNumDecimal(139.70000, 139.80000, 5)}`,
       price: getRandomNum(100, 50000),
       type: TYPEARRAY[getRandomIndex(TYPEARRAY)],
-      rooms: getRandomNum(1, 4),
-      guests: getRandomNum(1, 8),
+      rooms: getRandomNum(1, 3),
+      guests: getRandomNum(1, 3),
       checkin: CHECKINVALUE[getRandomIndex(CHECKINVALUE)] ,
       checkout: CHECKOUTVALUE[getRandomIndex(CHECKOUTVALUE)],
       features: getRandomFeatures(),
       description: 'Комната',
       photos: getRandomPhotos(),
-    },
-    location: {
-      lat: getRandomNumDecimal(35.65000, 35.70000, 5),
-      lng: getRandomNumDecimal(139.70000, 139.80000, 5),
     },
   };
   return adObject;
