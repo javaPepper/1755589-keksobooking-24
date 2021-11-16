@@ -38,7 +38,7 @@ const createSimilarAds = (ad) => {
   similarAd.querySelector('.popup__avatar').src = ad.author.avatar;
   similarAd.querySelector('.popup__title').textContent = ad.offer.title;
   similarAd.querySelector('.popup__text--address').textContent = ad.offer.address;
-  similarAd.querySelector('.popup__text--price').textContent = `${ad.offer.price  } ` + '₽/ночь';
+  similarAd.querySelector('.popup__text--price').textContent = `${ad.offer.price  } ₽/ночь`;
   similarAd.querySelector('.popup__type').textContent = ad.offer.type;
   if (ad.offer.type === 'flat') {
     similarAd.querySelector('.popup__type').textContent = 'Квартира';
@@ -55,7 +55,7 @@ const createSimilarAds = (ad) => {
   if (ad.offer.type === 'hotel') {
     similarAd.querySelector('.popup__type').textContent = 'Отель';
   }
-  similarAd.querySelector('.popup__text--capacity').textContent = ad.offer.rooms + ' ' + 'комнаты для' + ' ' + ad.offer.guests + ' ' + 'гостей';
+  similarAd.querySelector('.popup__text--capacity').textContent = `${ad.offer.rooms} комнаты для ${ad.offer.guests} гостей`;
   similarAd.querySelector('.popup__text--time').textContent = `Заезд после ${  ad.offer.checkin  }, выезд до ${  ad.offer.checkout}`;
   const popFeature = similarAd.querySelectorAll('.popup__feature');
   const popupFeatures = similarAd.querySelector('.popup__features');
