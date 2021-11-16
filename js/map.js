@@ -3,6 +3,7 @@ import{createSimilarAds} from './card.js';
 
 const map = L.map('map-canvas')
   .on('load', () =>  {
+    createAdObject();
     for (let i = 0; i<createAdObject().length; i++) {
       createSimilarAds(createAdObject()[i]);
     }
@@ -56,4 +57,7 @@ const setAdLatLng = (ad) => {
 for (let i = 0; i<createAdObject().length; i++) {
   setAdLatLng(createAdObject()[i]);
 }
+mainMarker.on('moveend', (evt) => {
+  document.querySelector('#address').value = `${evt.target.getLatLng().lat}  ${evt.target.getLatLng().lng}`;
+});
 export {map};
