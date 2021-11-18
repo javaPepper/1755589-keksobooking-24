@@ -1,12 +1,9 @@
 import{createAdObject} from './data.js';
 import{createSimilarAds} from './card.js';
-
+const cardArray = createAdObject();
 const map = L.map('map-canvas')
   .on('load', () =>  {
-    createAdObject();
-    for (let i = 0; i<createAdObject().length; i++) {
-      createSimilarAds(createAdObject()[i]);
-    }
+    cardArray;
   })
   .setView({
     lat: 35.68950,
@@ -54,8 +51,9 @@ const setAdLatLng = (ad) => {
     .bindPopup(createSimilarAds(ad));
   return ad;
 };
-for (let i = 0; i<createAdObject().length; i++) {
-  setAdLatLng(createAdObject()[i]);
+for (let i = 0; i<cardArray.length; i++) {
+  setAdLatLng(cardArray[i]);
+  createSimilarAds(cardArray[i]);
 }
 mainMarker.on('moveend', (evt) => {
   document.querySelector('#address').value = `${evt.target.getLatLng().lat}  ${evt.target.getLatLng().lng}`;
