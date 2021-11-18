@@ -118,7 +118,6 @@ timein.addEventListener('change', (evt) =>{
 timeout.addEventListener('change', (evt) => {
   timein.value = evt.target.value;
 });
-address.addEventListener('click', ()=>{
-  address.readOnly = true;
-});
+address.readOnly = true;
+
 export{enableForms, disableForms};
