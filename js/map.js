@@ -2,13 +2,14 @@ import{createAdObject} from './data.js';
 import{createSimilarAds} from './card.js';
 const cardArray = createAdObject();
 const map = L.map('map-canvas')
-  .on('load', () =>  {
-    cardArray;
-  })
   .setView({
     lat: 35.68950,
     lng: 139.69171,
   }, 10);
+map.on('load', () =>  {
+  cardArray;
+  createSimilarAds(cardArray);
+});
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   {
@@ -51,9 +52,9 @@ const setAdLatLng = (ad) => {
     .bindPopup(createSimilarAds(ad));
   return ad;
 };
+
 for (let i = 0; i<cardArray.length; i++) {
   setAdLatLng(cardArray[i]);
-  createSimilarAds(cardArray[i]);
 }
 mainMarker.on('moveend', (evt) => {
   document.querySelector('#address').value = `${evt.target.getLatLng().lat}  ${evt.target.getLatLng().lng}`;
