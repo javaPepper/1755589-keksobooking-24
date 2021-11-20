@@ -1,11 +1,7 @@
 import{createAdObject} from './data.js';
 import{createSimilarAds} from './card.js';
 
-const map = L.map('map-canvas')
-  .setView({
-    lat: 35.68950,
-    lng: 139.69171,
-  }, 10);
+const map = L.map('map-canvas');
 map.on('load', () =>  {
   const cardArray = createAdObject();
   cardArray.forEach((ad) => {
@@ -28,6 +24,10 @@ map.on('load', () =>  {
       .bindPopup(createSimilarAds(ad));
   });
 });
+map.setView({
+  lat: 35.68950,
+  lng: 139.69171,
+}, 10);
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   {
