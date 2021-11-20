@@ -34,7 +34,8 @@ const createSimilarAds = (ad) => {
     popupFeaturesCollection.classList.add(`popup__feature--${  ad.offer.features[i]}`);
     popupFeatures.appendChild(popupFeaturesCollection);
   }
-  similarAd.querySelector('.popup__description').textContent = ad.offer.description;
+  const popupDescription = similarAd.querySelector('.popup__description');
+  popupDescription.textContent = ad.offer.description;
   const photosList = similarAd.querySelector('.popup__photo');
   const popupPhotos = similarAd.querySelector('.popup__photos');
   photosList.remove();
@@ -45,6 +46,15 @@ const createSimilarAds = (ad) => {
     popPhotos.height = '40';
     popPhotos.src = ad.offer.photos[i];
     popupPhotos.appendChild(popPhotos);
+  }
+  if (ad.offer.features === '' || ad.offer.features === undefined) {
+    popupFeatures.remove();
+  }
+  if (ad.offer.description.textContent === '' || ad.offer.description.textContent === undefined) {
+    popupDescription.remove();
+  }
+  if (ad.offer.photos === '' || ad.offer.photos === undefined) {
+    popupPhotos.remove();
   }
   return similarAd;
 };

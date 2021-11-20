@@ -1,5 +1,5 @@
 import{createAdObject} from './data.js';
-import{createSimilarAds} from './card.js';
+import{ createSimilarAds } from './card.js';
 
 const map = L.map('map-canvas');
 map.on('load', () =>  {
