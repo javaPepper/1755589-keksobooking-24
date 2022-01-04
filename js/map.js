@@ -1,28 +1,34 @@
-import{createAdObject} from './data.js';
 import{ createSimilarAds } from './card.js';
+import{showErrorMessage, removeErrorMessage} from './util.js';
 
 const map = L.map('map-canvas');
 map.on('load', () =>  {
-  const cardArray = createAdObject();
-  cardArray.forEach((ad) => {
-    const icon = L.icon({
-      iconUrl: 'img/pin.svg',
-      iconSize: [40, 40],
-      iconAnchor: [20, 40],
+  fetch('https://24.javascript.pages.academy/keksobooking/data')
+    .then((response) => response.json())
+    .then((data) =>
+      data.forEach((ad) => {
+        const icon = L.icon({
+          iconUrl: 'img/pin.svg',
+          iconSize: [40, 40],
+          iconAnchor: [20, 40],
+        });
+        const marker = L.marker(
+          {
+            lat:ad.location.lat,
+            lng:ad.location.lng,
+          },
+          {
+            icon,
+          },
+        );
+        marker
+          .addTo(map)
+          .bindPopup(createSimilarAds(ad));
+      }))
+    .catch(() => {
+      const err = showErrorMessage('Произошла ошибка, сейчас мы всё исправим');
+      removeErrorMessage(err);
     });
-    const marker = L.marker(
-      {
-        lat:ad.location.lat,
-        lng:ad.location.lng,
-      },
-      {
-        icon,
-      },
-    );
-    marker
-      .addTo(map)
-      .bindPopup(createSimilarAds(ad));
-  });
 });
 map.setView({
   lat: 35.68950,

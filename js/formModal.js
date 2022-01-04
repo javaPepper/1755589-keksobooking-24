@@ -1,3 +1,4 @@
+import{showErrorMessage, showSuccessMessage, removeErrorMessage} from './util.js';
 const MIN_TITLE_VALUE_LENGTH = 30;
 const MAX_TITLE_VALUE_LENGTH = 100;
 const MAX_PRICE_VALUE = 1000000;
