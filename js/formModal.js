@@ -33,11 +33,37 @@ const resetForm = function () {
 };
 formButton.addEventListener('click', (evt) => {
   evt.preventDefault();
-  const success = showSuccessMessage();
-  resetForm();
-  window.addEventListener('click', () => {
-    removeSuccessMessage(success);
-  });
+  const formData = new FormData(adForm);
+  fetch(
+    'https://24.javascript.pages.academy/keksobooking',
+    {
+      method: 'POST',
+      body: formData,
+    },
+  )
+    .then((response) => {
+      if (response.ok) {
+        const success = showSuccessMessage();
+        resetForm();
+        window.addEventListener('click', () => {
+          removeSuccessMessage(success);
+        });
+      }
+      else if (response.ok === false) {
+        if (title.value === '') {
+          const error = showErrorMessage('Поле заголовка не может быть пустым');
+          removeErrorMessage(error);
+        }
+        else if (address.value === '') {
+          const error = showErrorMessage('Укажите расположение вашего объекта, передвинув красную метку');
+          removeErrorMessage(error);
+        }
+        else if (price.value === '') {
+          const error = showErrorMessage('Поле цены не может быть пустым');
+          removeErrorMessage(error);
+        }
+      }
+    });
 });
 const disableForms = function() {
   adForm.classList.add('ad-form--disabled');
