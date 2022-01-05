@@ -33,6 +33,7 @@ const resetForm = function () {
 };
 formButton.addEventListener('click', (evt) => {
   evt.preventDefault();
+  capacity.value = '1';
   const formData = new FormData(adForm);
   fetch(
     'https://24.javascript.pages.academy/keksobooking',
