@@ -1,4 +1,4 @@
-import{showErrorMessage, showSuccessMessage, removeErrorMessage} from './util.js';
+import{showErrorMessage, showSuccessMessage, removeErrorMessage, removeSuccessMessage} from './util.js';
 const MIN_TITLE_VALUE_LENGTH = 30;
 const MAX_TITLE_VALUE_LENGTH = 100;
 const MAX_PRICE_VALUE = 1000000;
@@ -15,7 +15,30 @@ const type = adForm.querySelector('#type');
 const timein = adForm.querySelector('#timein');
 const timeout = adForm.querySelector('#timeout');
 const address = adForm.querySelector('#address');
+const formButton = adForm.querySelector('.ad-form__submit');
+const description = adForm.querySelector('#description');
 
+const formArray = [title, address, description, price];
+
+const resetForm = function () {
+  type.value = 'flat';
+  price.placeholder = '5000';
+  timein.value = '12:00';
+  timeout.value = '12:00';
+  rooms.value = '1';
+  capacity.value = '3';
+  for (let i=0; i<formArray.length; i++) {
+    formArray[i].value = '';
+  }
+};
+formButton.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  const success = showSuccessMessage();
+  resetForm();
+  window.addEventListener('click', () => {
+    removeSuccessMessage(success);
+  });
+});
 const disableForms = function() {
   adForm.classList.add('ad-form--disabled');
   for (let i=0; i<adFormElement.length; i++) {

@@ -35,6 +35,16 @@ const showSuccessMessage = function () {
   document.body.appendChild(success);
   return success;
 };
+const removeSuccessMessage = function(success) {
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      success.remove();
+    }
+  });
+  document.addEventListener('click', ()=> {
+    success.remove();
+  });
+};
 const showErrorMessage = function (message) {
   const templateMessage = document.querySelector('#error').content;
   const messageError = templateMessage.cloneNode(true);
@@ -49,4 +59,4 @@ const removeErrorMessage = function (error) {
     error.remove();
   });
 };
-export {getRandomNumDecimal, getRandomNum, getRandomIndex, showErrorMessage, showSuccessMessage, removeErrorMessage};
+export {getRandomNumDecimal, getRandomNum, getRandomIndex, showErrorMessage, showSuccessMessage, removeErrorMessage, removeSuccessMessage};
