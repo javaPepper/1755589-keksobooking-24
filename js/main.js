@@ -1,5 +1,5 @@
-import {enableForms, disableForms} from './formModal.js';
-import  './map.js';
+import {getFormValue, disableForms, enableForms} from './formModal.js';
 
+getFormValue();
 disableForms();
 enableForms();

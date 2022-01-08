@@ -45,18 +45,21 @@ const mainIcon = L.icon({
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
-const mainMarker = L.marker(
-  {
-    lat: 35.68950,
-    lng: 139.69171,
-  },
-  {
-    draggable: true,
-    icon: mainIcon,
-  },
-);
+const setMainMarker = function() {
+  const mainMarker = L.marker(
+    {
+      lat: 35.68950,
+      lng: 139.69171,
+    },
+    {
+      draggable: true,
+      icon: mainIcon,
+    },
+  );
 mainMarker.addTo(map);
 mainMarker.on('moveend', (evt) => {
   document.querySelector('#address').value = `${evt.target.getLatLng().lat}  ${evt.target.getLatLng().lng}`;
 });
-export {map};
+return mainMarker;
+};
+export {map, setMainMarker};
