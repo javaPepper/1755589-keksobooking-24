@@ -30,6 +30,7 @@ map.on('load', () =>  {
       removeErrorMessage(err);
     });
 });
+
 map.setView({
   lat: 35.68950,
   lng: 139.69171,
@@ -56,10 +57,10 @@ const setMainMarker = function() {
       icon: mainIcon,
     },
   );
-mainMarker.addTo(map);
-mainMarker.on('moveend', (evt) => {
-  document.querySelector('#address').value = `${evt.target.getLatLng().lat}  ${evt.target.getLatLng().lng}`;
-});
-return mainMarker;
+  mainMarker.addTo(map);
+  mainMarker.on('moveend', (evt) => {
+    document.querySelector('#address').value = `${evt.target.getLatLng().lat}  ${evt.target.getLatLng().lng}`;
+  });
+  return mainMarker;
 };
 export {map, setMainMarker};

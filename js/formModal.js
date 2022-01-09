@@ -4,7 +4,6 @@ import {setMainMarker} from './map.js';
 const MIN_TITLE_VALUE_LENGTH = 30;
 const MAX_TITLE_VALUE_LENGTH = 100;
 const MAX_PRICE_VALUE = 1000000;
-const mapCanvas = document.querySelector('#map-canvas');
 const adForm = document.querySelector('.ad-form');
 const adFormHeader = adForm.querySelector('.ad-form-header');
 const adFormElement = adForm.querySelectorAll('.ad-form__element');
@@ -51,6 +50,11 @@ const getFormValue = function() {
         if (response.ok) {
           const success = showSuccessMessage();
           resetForm();
+          const mainPin = document.querySelector('.leaflet-marker-draggable');
+          mainPin.remove();
+          setMainMarker();
+          const marker = document.querySelector('.leaflet-popup-pane');
+          marker.remove();
           window.addEventListener('click', () => {
             removeSuccessMessage(success);
           });
@@ -70,9 +74,7 @@ const getFormValue = function() {
           }
         }
       });
-    const mainPin = document.querySelector('.leaflet-marker-draggable');
-    mainPin.remove();
-    setMainMarker();
+
   });
   title.addEventListener('input',  () => {
     const valueLength = title.value.length;
