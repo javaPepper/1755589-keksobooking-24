@@ -1,6 +1,6 @@
 import{showErrorMessage, showSuccessMessage, removeErrorMessage, removeSuccessMessage} from './util.js';
 import './map.js';
-import {setMainMarker} from './map.js';
+import {setMainMarker, setView} from './map.js';
 const MIN_TITLE_VALUE_LENGTH = 30;
 const MAX_TITLE_VALUE_LENGTH = 100;
 const MAX_PRICE_VALUE = 1000000;
@@ -54,7 +54,16 @@ const getFormValue = function() {
           mainPin.remove();
           setMainMarker();
           const marker = document.querySelector('.leaflet-popup-pane');
-          marker.remove();
+          if (marker) {
+            marker.remove();
+          }
+          setView();
+          const featureCheckbox = document.querySelectorAll('.features__checkbox');
+          featureCheckbox.forEach((feature) => {
+            if (feature.checked) {
+              feature.checked = false;
+            }
+          });
           window.addEventListener('click', () => {
             removeSuccessMessage(success);
           });
