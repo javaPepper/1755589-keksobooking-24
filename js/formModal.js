@@ -19,9 +19,26 @@ const timeout = adForm.querySelector('#timeout');
 const address = adForm.querySelector('#address');
 const formButton = adForm.querySelector('.ad-form__submit');
 const description = adForm.querySelector('#description');
-
+const resetButton = adForm.querySelector('.ad-form__reset');
 const formArray = [title, address, description, price];
 
+const deleteMainMarker = function() {
+  const mainPin = document.querySelector('.leaflet-marker-draggable');
+  mainPin.remove();
+
+};
+const deleteMarker = function() {
+  const marker = document.querySelector('.leaflet-popup');
+  if (marker) {
+    marker.remove();
+  }
+};
+resetButton.addEventListener('click', () => {
+  adForm.reset();
+  deleteMainMarker();
+  deleteMarker();
+  setMainMarker();
+});
 const resetForm = function () {
   type.value = 'flat';
   price.placeholder = '5000';
@@ -50,13 +67,9 @@ const getFormValue = function() {
         if (response.ok) {
           const success = showSuccessMessage();
           resetForm();
-          const mainPin = document.querySelector('.leaflet-marker-draggable');
-          mainPin.remove();
+          deleteMainMarker();
           setMainMarker();
-          const marker = document.querySelector('.leaflet-popup-pane');
-          if (marker) {
-            marker.remove();
-          }
+          deleteMarker();
           setView();
           const featureCheckbox = document.querySelectorAll('.features__checkbox');
           featureCheckbox.forEach((feature) => {

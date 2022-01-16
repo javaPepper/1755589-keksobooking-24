@@ -30,11 +30,13 @@ map.on('load', () =>  {
       removeErrorMessage(err);
     });
 });
-
-map.setView({
-  lat: 35.68950,
-  lng: 139.69171,
-}, 10);
+const setView = function() {
+  map.setView({
+    lat: 35.68950,
+    lng: 139.69171,
+  }, 12);
+};
+setView();
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   {
@@ -63,4 +65,4 @@ const setMainMarker = function() {
   });
   return mainMarker;
 };
-export {map, setMainMarker};
+export {map, setMainMarker, setView};
