@@ -1,5 +1,5 @@
 import{showErrorMessage, showSuccessMessage, removeErrorMessage, removeSuccessMessage} from './util.js';
-import './map.js';
+import  './map.js';
 import {setMainMarker, setView} from './map.js';
 const MIN_TITLE_VALUE_LENGTH = 30;
 const MAX_TITLE_VALUE_LENGTH = 100;

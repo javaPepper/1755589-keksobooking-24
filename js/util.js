@@ -1,3 +1,7 @@
+const setCardQuantityOfTen = function (ad) {
+  return ad.slice(-10);
+};
+
 const getRandomNum = function(from, to) {
   from = Math.ceil(from);
   to = Math.floor(to);
@@ -59,4 +63,4 @@ const removeErrorMessage = function (error) {
     error.remove();
   });
 };
-export {getRandomNumDecimal, getRandomNum, getRandomIndex, showErrorMessage, showSuccessMessage, removeErrorMessage, removeSuccessMessage};
+export {setCardQuantityOfTen, getRandomNumDecimal, getRandomNum, getRandomIndex, showErrorMessage, showSuccessMessage, removeErrorMessage, removeSuccessMessage};
